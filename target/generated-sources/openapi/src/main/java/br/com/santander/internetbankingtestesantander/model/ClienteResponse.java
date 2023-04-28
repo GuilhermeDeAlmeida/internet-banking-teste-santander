@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Classe para representar um Cliente.
  */
 @ApiModel(description = "Classe para representar um Cliente.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T15:24:37.976189-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:06:24.592822-03:00[America/Sao_Paulo]")
 public class ClienteResponse   {
   @JsonProperty("id")
   private Integer id;

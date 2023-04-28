@@ -6,11 +6,11 @@ info:
   description: "API desenvolvida para realização do teste proposto pelo Santander Tecnologia. A ideia é desenvolver um projeto fictício de um pseudo Internet Banking."
 
 tags:
-  - name: "Clientes"
-  - name: "Valores"
-  - name: "Transações"
+  - name: "Cliente"
+  - name: "Valor"
+  - name: "Transação"
 paths:
-  /cliente:
+  /clientes:
     post:
       summary: Cadastrar um novo Cliente
       tags:
@@ -31,7 +31,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClienteResponse'
-  /clientes:
     get:
       summary: Obter lista Clientes.
       tags:
