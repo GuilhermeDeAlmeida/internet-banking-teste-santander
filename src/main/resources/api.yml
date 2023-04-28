@@ -1,0 +1,218 @@
+openapi: 3.0.0
+
+info:
+  version: 0.0.1
+  title: Teste Desenvolvedor Backend Santander
+  description: "API desenvolvida para realização do teste proposto pelo Santander Tecnologia. A ideia é desenvolver um projeto fictício de um pseudo Internet Banking."
+
+tags:
+  - name: "Clientes"
+  - name: "Valores"
+  - name: "Transações"
+paths:
+  /cliente:
+    post:
+      summary: Cadastrar um novo Cliente
+      tags:
+        - "Clientes"
+      description: Cadastrar um novo Cliente
+      operationId: cadastrarCliente
+      requestBody:
+        required: true
+        description: "Para que o cadastro seja realizado, deverá ser enviado no body do request as seguintes informações."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+      responses:
+        "200":
+          description: "Retornará sucesso e o cliente que foi salvo"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+  /clientes:
+    get:
+      summary: Obter lista Clientes.
+      tags:
+        - "Clientes"
+      description: "Obter lista de todos os Clientes cadastrados"
+      operationId: obterListaClientes
+      responses:
+        "200":
+          description: "Sucesso ao obter a lista de todos os clientes cadastrados no sistema."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClienteResponse'
+
+  /valores/sacar:
+    post:
+      summary: Saque de valor da conta de um cliente.
+      tags:
+        - "Valores"
+      description: "Recurso disponibilizado para sacar um valor da conta de um Cliente."
+      operationId: sacarValor
+      requestBody:
+        required: true
+        description: "Deve ser enviado o valor o valor a ser SACADO, e a conta do cliente onde a operação será realizada. Sujeito a taxa administrativa definida em regra de negócio."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperacaoValorRequest'
+      responses:
+        "200":
+          description: This is description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperacaoValorResponse'
+  /valores/depositar:
+    post:
+      summary: "Depósito de um valor na conta de um cliente."
+      tags:
+        - "Valores"
+      description: "Recurso disponibilizado para depositar um valor na conta de um Cliente."
+      operationId: depositarValor
+      requestBody:
+        required: true
+        description: "Deve ser enviado o valor a ser DEPOSITADO, e a conta do cliente onde a operação será realizada."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperacaoValorRequest'
+      responses:
+        "200":
+          description: This is description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperacaoValorResponse'
+  /transacoes/historico/{dataTransacoes}:
+    get:
+      summary: Obter histórico de transações
+      tags:
+        - "Transações"
+      description: "Obter historico de transações em determinada data, para cada tipo de operação,(depósito ou saque), caso não seja preenchido será retornada resposta para ambas as operações."
+      operationId: obterHistoricoTransacoes
+      parameters:
+        - name: dataTransacoes
+          in: path
+          description: Data em que se deseja obter as movimentações.
+          required: true
+          schema:
+            type: string
+        - name: tipoOperacao
+          in: query
+          description: Tipo de operação a ser consultada.
+          required: false
+          schema:
+            type: string
+            enum:
+              - deposito
+              - saque
+      responses:
+        "200":
+          description: "Retornará uma lista de transações"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransacaoResponse'
+
+components:
+  schemas:
+    Cliente:
+      description: Classe para representar um Cliente.
+      type: object
+      properties:
+        nome:
+          type: string
+          description: "Nome do Cliente que será cadastrado no sistema."
+        planoExclusive:
+          type: boolean
+          description: "Descreve caso o Cliente esteja incluso no plano exclusive."
+        saldo:
+          type: number
+          description: "Valor do saldo da conta do Cliente no sistema."
+        numeroConta:
+          type: string
+          description: "Número da conta do Cliente."
+        dataNascimento:
+          type: string
+          description: "Data de nascimento do Cliente."
+    ClienteResponse:
+      description: Classe para representar um Cliente.
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID gerado pelo banco de dados."
+        nome:
+          type: string
+          description: "Nome do Cliente que será cadastrado no sistema."
+        planoExclusive:
+          type: boolean
+          description: "Descreve caso o Cliente esteja incluso no plano exclusive."
+        saldo:
+          type: number
+          description: "Valor do saldo da conta do Cliente no sistema."
+        numeroConta:
+          type: string
+          description: "Número da conta do Cliente."
+        dataNascimento:
+          type: string
+          description: "Data de nascimento do Cliente."
+    OperacaoValorRequest:
+      description: Classe para representação da solicitação de uma operação com uma conta de um Cliente.
+      type: object
+      properties:
+        contaCliente:
+          type: string
+          description: "Conta do Cliente onde será realizada a operação."
+        valorOperacao:
+          type: number
+          description: "Valor que será utilizado na operação."
+
+    OperacaoValorResponse:
+      description: Class to represents Transacao
+      type: object
+      properties:
+        contaCliente:
+          type: string
+          description: "Conta em que foi realizada a operação."
+        novoSaldo:
+          type: number
+          description: "Novo saldo da conta do cliente após realização da operação."
+
+
+    TransacaoResponse:
+      description: Class to represents Transacao
+      type: object
+      properties:
+
+        tipoMovimentacao:
+          type: string
+          description: "Nome do Cliente que será cadastrado no sistema."
+        dataMovimentacao:
+          type: string
+          description: "Descreve caso o Cliente esteja incluso no plano exclusive."
+        listaTransacoes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransacaoItemResponse'
+    TransacaoItemResponse:
+      description: Class to represents Transacao
+      type: object
+      properties:
+
+        valor:
+          type: number
+          description: "Valor da transação."
+        conta:
+          type: string
+          description: "Conta onde foi realizada a operação."
+        novoSaldo:
+          type: number
+          description: "Novo saldo após a operação."
