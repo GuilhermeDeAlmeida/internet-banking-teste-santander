@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Class to represents Transacao
  */
 @ApiModel(description = "Class to represents Transacao")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:06:24.592822-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:51:37.779014-03:00[America/Sao_Paulo]")
 public class TransacaoItemResponse   {
   @JsonProperty("valor")
   private BigDecimal valor;

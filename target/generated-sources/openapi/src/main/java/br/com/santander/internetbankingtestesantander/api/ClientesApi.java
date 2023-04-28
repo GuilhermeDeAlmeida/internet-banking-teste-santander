@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:06:24.592822-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:51:37.779014-03:00[America/Sao_Paulo]")
 @Validated
 @Api(value = "clientes", description = "the clientes API")
 public interface ClientesApi {
@@ -34,7 +34,7 @@ public interface ClientesApi {
      * @param cliente Para que o cadastro seja realizado, deverá ser enviado no body do request as seguintes informações. (required)
      * @return Retornará sucesso e o cliente que foi salvo (status code 200)
      */
-    @ApiOperation(value = "Cadastrar um novo Cliente", nickname = "cadastrarCliente", notes = "Cadastrar um novo Cliente", response = ClienteResponse.class, tags={ "Clientes", })
+    @ApiOperation(value = "Cadastrar um novo Cliente", nickname = "cadastrarCliente", notes = "Cadastrar um novo Cliente", response = ClienteResponse.class, tags={ "Cliente", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Retornará sucesso e o cliente que foi salvo", response = ClienteResponse.class) })
     @PostMapping(
@@ -53,7 +53,7 @@ public interface ClientesApi {
      *
      * @return Sucesso ao obter a lista de todos os clientes cadastrados no sistema. (status code 200)
      */
-    @ApiOperation(value = "Obter lista Clientes.", nickname = "obterListaClientes", notes = "Obter lista de todos os Clientes cadastrados", response = ClienteResponse.class, responseContainer = "List", tags={ "Clientes", })
+    @ApiOperation(value = "Obter lista Clientes.", nickname = "obterListaClientes", notes = "Obter lista de todos os Clientes cadastrados", response = ClienteResponse.class, responseContainer = "List", tags={ "Cliente", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Sucesso ao obter a lista de todos os clientes cadastrados no sistema.", response = ClienteResponse.class, responseContainer = "List") })
     @GetMapping(

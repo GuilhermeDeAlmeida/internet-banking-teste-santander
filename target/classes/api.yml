@@ -14,7 +14,7 @@ paths:
     post:
       summary: Cadastrar um novo Cliente
       tags:
-        - "Clientes"
+        - "Cliente"
       description: Cadastrar um novo Cliente
       operationId: cadastrarCliente
       requestBody:
@@ -34,7 +34,7 @@ paths:
     get:
       summary: Obter lista Clientes.
       tags:
-        - "Clientes"
+        - "Cliente"
       description: "Obter lista de todos os Clientes cadastrados"
       operationId: obterListaClientes
       responses:
@@ -51,7 +51,7 @@ paths:
     post:
       summary: Saque de valor da conta de um cliente.
       tags:
-        - "Valores"
+        - "Valor"
       description: "Recurso disponibilizado para sacar um valor da conta de um Cliente."
       operationId: sacarValor
       requestBody:
@@ -72,7 +72,7 @@ paths:
     post:
       summary: "Depósito de um valor na conta de um cliente."
       tags:
-        - "Valores"
+        - "Valor"
       description: "Recurso disponibilizado para depositar um valor na conta de um Cliente."
       operationId: depositarValor
       requestBody:
@@ -93,7 +93,7 @@ paths:
     get:
       summary: Obter histórico de transações
       tags:
-        - "Transações"
+        - "Transação"
       description: "Obter historico de transações em determinada data, para cada tipo de operação,(depósito ou saque), caso não seja preenchido será retornada resposta para ambas as operações."
       operationId: obterHistoricoTransacoes
       parameters:

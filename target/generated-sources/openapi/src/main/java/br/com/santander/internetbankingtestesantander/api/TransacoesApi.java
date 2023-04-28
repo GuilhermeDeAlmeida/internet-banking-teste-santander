@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:06:24.592822-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:51:37.779014-03:00[America/Sao_Paulo]")
 @Validated
 @Api(value = "transacoes", description = "the transacoes API")
 public interface TransacoesApi {
@@ -34,7 +34,7 @@ public interface TransacoesApi {
      * @param tipoOperacao Tipo de operação a ser consultada. (optional)
      * @return Retornará uma lista de transações (status code 200)
      */
-    @ApiOperation(value = "Obter histórico de transações", nickname = "obterHistoricoTransacoes", notes = "Obter historico de transações em determinada data, para cada tipo de operação,(depósito ou saque), caso não seja preenchido será retornada resposta para ambas as operações.", response = TransacaoResponse.class, tags={ "Transações", })
+    @ApiOperation(value = "Obter histórico de transações", nickname = "obterHistoricoTransacoes", notes = "Obter historico de transações em determinada data, para cada tipo de operação,(depósito ou saque), caso não seja preenchido será retornada resposta para ambas as operações.", response = TransacaoResponse.class, tags={ "Transação", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Retornará uma lista de transações", response = TransacaoResponse.class) })
     @GetMapping(

@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:06:24.592822-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T18:51:37.779014-03:00[America/Sao_Paulo]")
 @Validated
 @Api(value = "valores", description = "the valores API")
 public interface ValoresApi {
@@ -34,7 +34,7 @@ public interface ValoresApi {
      * @param operacaoValorRequest Deve ser enviado o valor a ser DEPOSITADO, e a conta do cliente onde a operação será realizada. (required)
      * @return This is description (status code 200)
      */
-    @ApiOperation(value = "Depósito de um valor na conta de um cliente.", nickname = "depositarValor", notes = "Recurso disponibilizado para depositar um valor na conta de um Cliente.", response = OperacaoValorResponse.class, tags={ "Valores", })
+    @ApiOperation(value = "Depósito de um valor na conta de um cliente.", nickname = "depositarValor", notes = "Recurso disponibilizado para depositar um valor na conta de um Cliente.", response = OperacaoValorResponse.class, tags={ "Valor", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "This is description", response = OperacaoValorResponse.class) })
     @PostMapping(
@@ -54,7 +54,7 @@ public interface ValoresApi {
      * @param operacaoValorRequest Deve ser enviado o valor o valor a ser SACADO, e a conta do cliente onde a operação será realizada. Sujeito a taxa administrativa definida em regra de negócio. (required)
      * @return This is description (status code 200)
      */
-    @ApiOperation(value = "Saque de valor da conta de um cliente.", nickname = "sacarValor", notes = "Recurso disponibilizado para sacar um valor da conta de um Cliente.", response = OperacaoValorResponse.class, tags={ "Valores", })
+    @ApiOperation(value = "Saque de valor da conta de um cliente.", nickname = "sacarValor", notes = "Recurso disponibilizado para sacar um valor da conta de um Cliente.", response = OperacaoValorResponse.class, tags={ "Valor", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "This is description", response = OperacaoValorResponse.class) })
     @PostMapping(

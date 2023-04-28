@@ -7,8 +7,12 @@
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/api/TransacoesApiDelegate.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/model/OperacaoValorRequest.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/api/ClientesApiDelegate.java
+/Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/src/main/java/br/com/santander/internetbankingtestesantander/delegate/TransacoesDelegateImpl.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/api/ValoresApiController.java
+/Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/src/main/java/br/com/santander/internetbankingtestesantander/service/ValoresService.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/model/ClienteResponse.java
+/Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/src/main/java/br/com/santander/internetbankingtestesantander/delegate/ValoresDelegateImpl.java
+/Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/src/main/java/br/com/santander/internetbankingtestesantander/service/TransacoesService.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/model/TransacaoItemResponse.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/src/main/java/br/com/santander/internetbankingtestesantander/delegate/ClienteDelegateImpl.java
 /Users/guilhermedealmeidafreitas/Desktop/santander/teste/internet-banking-teste-santander/target/generated-sources/openapi/src/main/java/br/com/santander/internetbankingtestesantander/api/ValoresApiDelegate.java

@@ -16,4 +16,6 @@ public class TransacoesDelegateImpl implements TransacoesApiDelegate {
     public ResponseEntity<TransacaoResponse> obterHistoricoTransacoes(String dataTransacoes, String tipoOperacao) {
         return ResponseEntity.ok(transacoesService.obterHistoricoTransacoes(dataTransacoes, tipoOperacao));
     }
+
+
 }
