@@ -46,7 +46,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ClienteResponse'
-
   /valores/sacar:
     post:
       summary: Saque de valor da conta de um cliente.

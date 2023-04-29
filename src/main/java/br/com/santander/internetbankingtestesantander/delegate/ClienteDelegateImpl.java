@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ClienteDelegateImpl implements ClientesApiDelegate {
 
-    private ClienteService clienteService;
+    private final ClienteService clienteService;
 
     public ClienteDelegateImpl(ClienteService clienteService) {
         this.clienteService = clienteService;

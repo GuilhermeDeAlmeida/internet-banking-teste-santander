@@ -5,10 +5,12 @@ import br.com.santander.internetbankingtestesantander.model.OperacaoValorRequest
 import br.com.santander.internetbankingtestesantander.model.OperacaoValorResponse;
 import br.com.santander.internetbankingtestesantander.service.ValoresService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ValoresDelegateImpl implements ValoresApiDelegate {
 
-    private ValoresService valoresService;
+    private final ValoresService valoresService;
 
     public ValoresDelegateImpl(ValoresService valoresService) {
         this.valoresService = valoresService;
