@@ -11,6 +11,9 @@ import java.util.List;
 @Service
 public class ClienteService {
 
+    /**
+     * Retornar todos clientes cadastrados
+     * */
     public ClienteResponse cadastrarCliente(Cliente cliente){
         return new ClienteResponse();
     }
