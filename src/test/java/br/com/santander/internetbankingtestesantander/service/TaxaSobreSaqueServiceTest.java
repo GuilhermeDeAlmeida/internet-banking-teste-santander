@@ -1,5 +1,6 @@
 package br.com.santander.internetbankingtestesantander.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TaxaSobreSaqueServiceTest {
@@ -9,33 +10,39 @@ public class TaxaSobreSaqueServiceTest {
      * valor > 300      0.01
      * planoExlcusive   isento
      * */
-//    private TaxaSobreSaqueService service;
-//    private Saque saque;
-//    @BeforeEach
-//    public void init(){
-//        this.service = service;
-//        this.saque = new Saque();
-//    }
+    private TaxaSobreSaqueService service;
+    private Saque saqueMenorCem;
+    private Saque saqueMaiorCemMenorTrezentos;
+    private Saque saqueMaiorTrezentos;
+    private Saque saqueExclusive;
 
-    @Test
-    void taxaDeveSerZeroQuandoValorSaqueMenorQueCem(){
-//        service.aplicarTaxa(saque);
-
+    @BeforeEach
+    public void init(){
+        this.service = new TaxaSobreSaqueService();
+        this.saqueMenorCem = new Saque();
+        this.saqueMaiorCemMenorTrezentos = new Saque();
+        this.saqueMaiorTrezentos = new Saque();
+        this.saqueExclusive = new Saque();
     }
 
     @Test
-    void taxaDeveSerZeroQuandoPlanoExclusive(){
-
+    void taxaDeveSerZeroQuandoValorSaqueMenorQueCem(){
+        service.aplicarTaxa(saqueMenorCem);
     }
 
     @Test
     void taxaDeveSerZeroPontoZeroQuatroQuandoValorSaqueMaiorQueCemEMenorQueTrezentos(){
-
+        service.aplicarTaxa(saqueMaiorTrezentos);
     }
 
     @Test
     void taxaDeveSerZeroPontoUmQuandoValorSaqueMaiorQueTrezentos(){
+        service.aplicarTaxa(saqueMaiorCemMenorTrezentos);
+    }
+
+    @Test
+    void taxaDeveSerZeroQuandoPlanoExclusive(){
+        service.aplicarTaxa(saqueExclusive);
 
     }
-//    void taxaDeveriaSerZeroPontoZeroQuatroQuandoTaxa
 }
