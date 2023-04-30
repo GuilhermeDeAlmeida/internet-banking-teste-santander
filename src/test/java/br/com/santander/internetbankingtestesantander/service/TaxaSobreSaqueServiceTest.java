@@ -1,5 +1,6 @@
 package br.com.santander.internetbankingtestesantander.service;
 
+import br.com.santander.internetbankingtestesantander.model.Saque;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
