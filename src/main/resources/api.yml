@@ -111,8 +111,8 @@ paths:
           schema:
             type: string
             enum:
-              - deposito
-              - saque
+              - DEPOSITO
+              - SAQUE
       responses:
         "200":
           description: "Retornará uma lista de transações"
@@ -174,6 +174,12 @@ components:
         valorOperacao:
           type: number
           description: "Valor que será utilizado na operação."
+        tipoOperacao:
+            type: string
+            enum:
+              - DEPOSITO
+              - SAQUE
+
 
     OperacaoValorResponse:
       description: Class to represents Transacao
