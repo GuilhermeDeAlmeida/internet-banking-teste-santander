@@ -1,16 +1,18 @@
 package br.com.santander.internetbankingtestesantander.delegate;
 
-import br.com.santander.internetbankingtestesantander.api.ClienteApiDelegate;
+import br.com.santander.internetbankingtestesantander.api.ClientesApiDelegate;
 import br.com.santander.internetbankingtestesantander.model.Cliente;
 import br.com.santander.internetbankingtestesantander.model.ClienteResponse;
 import br.com.santander.internetbankingtestesantander.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-@Service
-public class ClienteDelegateImpl implements ClienteApiDelegate {
+import java.util.List;
 
-    private ClienteService clienteService;
+@Service
+public class ClienteDelegateImpl implements ClientesApiDelegate {
+
+    private final ClienteService clienteService;
 
     public ClienteDelegateImpl(ClienteService clienteService) {
         this.clienteService = clienteService;
@@ -18,6 +20,11 @@ public class ClienteDelegateImpl implements ClienteApiDelegate {
 
     @Override
     public ResponseEntity<ClienteResponse> cadastrarCliente(Cliente cliente) {
-         return ClienteApiDelegate.super.cadastrarCliente(cliente);
+        return ResponseEntity.ok(clienteService.cadastrarCliente(cliente));
+    }
+
+    @Override
+    public ResponseEntity<List<ClienteResponse>> obterListaClientes() {
+        return ResponseEntity.ok(clienteService.obterListaClientes());
     }
 }

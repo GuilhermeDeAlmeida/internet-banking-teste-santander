@@ -5,6 +5,7 @@
  */
 package br.com.santander.internetbankingtestesantander.api;
 
+import br.com.santander.internetbankingtestesantander.model.Cliente;
 import br.com.santander.internetbankingtestesantander.model.ClienteResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T15:24:37.976189-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-28T22:08:26.805177-03:00[America/Sao_Paulo]")
 @Validated
 @Api(value = "clientes", description = "the clientes API")
 public interface ClientesApi {
@@ -27,12 +28,32 @@ public interface ClientesApi {
     }
 
     /**
+     * POST /clientes : Cadastrar um novo Cliente
+     * Cadastrar um novo Cliente
+     *
+     * @param cliente Para que o cadastro seja realizado, deverá ser enviado no body do request as seguintes informações. (required)
+     * @return Retornará sucesso e o cliente que foi salvo (status code 200)
+     */
+    @ApiOperation(value = "Cadastrar um novo Cliente", nickname = "cadastrarCliente", notes = "Cadastrar um novo Cliente", response = ClienteResponse.class, tags={ "Cliente", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Retornará sucesso e o cliente que foi salvo", response = ClienteResponse.class) })
+    @PostMapping(
+        value = "/clientes",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<ClienteResponse> cadastrarCliente(@ApiParam(value = "Para que o cadastro seja realizado, deverá ser enviado no body do request as seguintes informações." ,required=true )  @Valid @RequestBody Cliente cliente) {
+        return getDelegate().cadastrarCliente(cliente);
+    }
+
+
+    /**
      * GET /clientes : Obter lista Clientes.
      * Obter lista de todos os Clientes cadastrados
      *
      * @return Sucesso ao obter a lista de todos os clientes cadastrados no sistema. (status code 200)
      */
-    @ApiOperation(value = "Obter lista Clientes.", nickname = "obterListaClientes", notes = "Obter lista de todos os Clientes cadastrados", response = ClienteResponse.class, responseContainer = "List", tags={ "Clientes", })
+    @ApiOperation(value = "Obter lista Clientes.", nickname = "obterListaClientes", notes = "Obter lista de todos os Clientes cadastrados", response = ClienteResponse.class, responseContainer = "List", tags={ "Cliente", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Sucesso ao obter a lista de todos os clientes cadastrados no sistema.", response = ClienteResponse.class, responseContainer = "List") })
     @GetMapping(
