@@ -1,10 +1,6 @@
 package br.com.santander.internetbankingtestesantander.controller;
 
-import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteRequest;
-import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteResponse;
-import br.com.santander.internetbankingtestesantander.dto.ListagemClientesResponse;
 import br.com.santander.internetbankingtestesantander.dto.ListagemTransacoesResponse;
-import br.com.santander.internetbankingtestesantander.service.ClienteService;
 import br.com.santander.internetbankingtestesantander.service.TransacoesService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +8,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("transacoes")
@@ -31,6 +26,13 @@ public class TransacaoController {
             @RequestParam String tipoOperacao) {
         return ResponseEntity.ok(service
                 .obterListaTransacoes(paginacao, dataTransacao, tipoOperacao));
+    }
+
+
+    @GetMapping("/teste")
+    public ResponseEntity<Page<ListagemTransacoesResponse>> obterTransacoes() {
+        return ResponseEntity.ok(service
+                .obterListaTransacoes());
     }
 
 

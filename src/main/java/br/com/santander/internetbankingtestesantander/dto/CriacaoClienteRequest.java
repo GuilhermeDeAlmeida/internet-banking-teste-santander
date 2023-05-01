@@ -1,9 +1,9 @@
 package br.com.santander.internetbankingtestesantander.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+
 
 public record CriacaoClienteRequest(
         @NotBlank

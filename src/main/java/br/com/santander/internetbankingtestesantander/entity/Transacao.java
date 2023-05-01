@@ -11,9 +11,7 @@ public class Transacao {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     Long idTransacao;
-    @ManyToOne
-    @JoinColumn(name = "id_cliente")
-    Cliente cliente;
+    Long idCliente;
     String tipoOperacao;
     Date dataTransacao;
     Boolean cobradoTaxa;
@@ -25,8 +23,8 @@ public class Transacao {
     public Transacao() {
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Long getIdCliente() {
+        return idCliente;
     }
 
     public Long getIdTransacao() {

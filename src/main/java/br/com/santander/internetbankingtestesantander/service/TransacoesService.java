@@ -37,4 +37,8 @@ public class TransacoesService {
         return map;
     }
 
+    public Page<ListagemTransacoesResponse> obterListaTransacoes() {
+         return repository.findAll(Pageable.ofSize(10))
+                 .map(ListagemTransacoesResponse::new);
+    }
 }
