@@ -8,7 +8,6 @@ public record CriacaoClienteResponse(Long id,
                                      String nome,
                                      String dataNascimento,
                                      String numeroConta,
-                                     String conta,
                                      BigDecimal saldo,
                                      Boolean planoExclusive) {
 
@@ -17,7 +16,6 @@ public record CriacaoClienteResponse(Long id,
                         cliente.getIdCliente(),
                         cliente.getNome(),
                         cliente.getDataNascimento(),
-                        cliente.getNumeroConta(),
                         cliente.getNumeroConta(),
                         cliente.getSaldo(),
                         cliente.getPlanoExclusive()
