@@ -3,6 +3,7 @@ package br.com.santander.internetbankingtestesantander.service;
 import br.com.santander.internetbankingtestesantander.model.Saque;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class TaxaSobreSaqueService {
     /**
@@ -14,21 +15,21 @@ public class TaxaSobreSaqueService {
     public void aplicarTaxa(Saque saque) {
         BigDecimal valorSaque = saque.getValor();
         BigDecimal taxa;
-        BigDecimal cem = new BigDecimal(100);
+        BigDecimal cem = new BigDecimal("100");
+        BigDecimal trezentos = new BigDecimal("300");
 
-        if(saque.isPlanoExclusive){
-
+        if(saque.isPlanoExclusive()){
+            taxa = new BigDecimal(BigInteger.ZERO);
         }
         if(valorSaque.compareTo(cem) < 0){
-
+            taxa = new BigDecimal(BigInteger.ZERO);
         }
         if(valorSaque.compareTo(cem) > 0 && valorSaque.compareTo(trezentos) < 0){
-
+            taxa = new BigDecimal("0.004");
         }
         if(valorSaque.compareTo(trezentos) > 0){
-
+            taxa = new BigDecimal("0.01");
         }
-
 
     }
 }

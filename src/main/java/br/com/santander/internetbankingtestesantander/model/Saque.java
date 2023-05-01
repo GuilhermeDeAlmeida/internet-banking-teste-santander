@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Saque {
     private BigDecimal valor;
+    private Boolean planoExclusive;
 
     public BigDecimal getValor() {
         return valor;
@@ -12,4 +13,13 @@ public class Saque {
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
+
+    public Boolean isPlanoExclusive() {
+        return planoExclusive;
+    }
+
+    public void setPlanoExclusive(Boolean planoExclusive) {
+        this.planoExclusive = planoExclusive;
+    }
 }
+

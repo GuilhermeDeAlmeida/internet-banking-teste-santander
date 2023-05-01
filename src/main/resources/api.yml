@@ -23,7 +23,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+              $ref: '#/components/schemas/ClienteRequest'
       responses:
         "200":
           description: "Retornará sucesso e o cliente que foi salvo"
@@ -121,7 +121,7 @@ paths:
 
 components:
   schemas:
-    Cliente:
+    ClienteRequest:
       description: Classe para representar um Cliente.
       type: object
       properties:
@@ -177,8 +177,6 @@ components:
             enum:
               - DEPOSITO
               - SAQUE
-
-
     OperacaoValorResponse:
       description: Class to represents Transacao
       type: object
