@@ -1,8 +1,13 @@
 package br.com.santander.internetbankingtestesantander.entity;
 
 
+import br.com.santander.internetbankingtestesantander.model.Taxa;
+import br.com.santander.internetbankingtestesantander.model.TipoOperacao;
+import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,16 +17,41 @@ public class Transacao {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     Long idTransacao;
     Long idCliente;
-    String tipoOperacao;
-    Date dataTransacao;
+    @Enumerated(EnumType.STRING)
+    TipoOperacao tipoOperacao;
+    LocalDate dataTransacao;
     Boolean cobradoTaxa;
     BigDecimal valorOperacao;
-    BigDecimal saldoInicial;
-    BigDecimal novoSaldo;
-    String regraAplicada;
+    @Enumerated(EnumType.STRING)
+    TipoTaxa regraAplicada;
 
     public Transacao() {
     }
+
+    public Transacao(Long idCliente,
+                     LocalDate dataTransacao,
+                     Taxa taxa) {
+
+        this.idCliente = idCliente;
+        this.tipoOperacao = TipoOperacao.SAQUE;
+        this.dataTransacao = dataTransacao;
+        this.cobradoTaxa = taxa.cobradoTaxa();
+        this.valorOperacao = taxa.valorComTaxa();
+        this.regraAplicada = taxa.regraAplicada();
+    }
+
+    public Transacao(Long idCliente,
+                     LocalDate dataTransacao,
+                     BigDecimal valorOperacao) {
+
+        this.idCliente = idCliente;
+        this.tipoOperacao = TipoOperacao.DEPOSITO;
+        this.dataTransacao = dataTransacao;
+        this.cobradoTaxa = false;
+        this.valorOperacao = valorOperacao;
+        this.regraAplicada = TipoTaxa.NONE;
+    }
+
 
     public Long getIdCliente() {
         return idCliente;
@@ -31,11 +61,15 @@ public class Transacao {
         return idTransacao;
     }
 
-    public String getTipoOperacao() {
+    public TipoOperacao getTipoOperacao() {
         return tipoOperacao;
     }
 
-    public Date getDataTransacao() {
+    public TipoTaxa getRegraAplicada() {
+        return regraAplicada;
+    }
+
+    public LocalDate getDataTransacao() {
         return dataTransacao;
     }
 
@@ -47,15 +81,4 @@ public class Transacao {
         return valorOperacao;
     }
 
-    public BigDecimal getSaldoInicial() {
-        return saldoInicial;
-    }
-
-    public BigDecimal getNovoSaldo() {
-        return novoSaldo;
-    }
-
-    public String getRegraAplicada() {
-        return regraAplicada;
-    }
 }

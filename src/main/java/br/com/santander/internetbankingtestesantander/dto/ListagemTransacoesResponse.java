@@ -1,18 +1,19 @@
 package br.com.santander.internetbankingtestesantander.dto;
 
 import br.com.santander.internetbankingtestesantander.entity.Transacao;
+import br.com.santander.internetbankingtestesantander.model.TipoOperacao;
+import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 public record ListagemTransacoesResponse(Long idTransacao,
-                                         String tipoTransacao,
-                                         Date dataTransacao,
+                                         TipoOperacao tipoTransacao,
+                                         LocalDate dataTransacao,
                                          Boolean cobradoTaxa,
                                          BigDecimal valorOperacao,
-                                         BigDecimal saldoInicial,
-                                         BigDecimal novoSaldo,
-                                         String regraAplicada) {
+                                         TipoTaxa regraAplicada) {
 
     public ListagemTransacoesResponse(Transacao transacao){
         this(
@@ -21,8 +22,6 @@ public record ListagemTransacoesResponse(Long idTransacao,
                 transacao.getDataTransacao(),
                 transacao.getCobradoTaxa(),
                 transacao.getValorOperacao(),
-                transacao.getSaldoInicial(),
-                transacao.getNovoSaldo(),
                 transacao.getRegraAplicada()
         );
     }

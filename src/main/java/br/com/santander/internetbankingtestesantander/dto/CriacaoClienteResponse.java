@@ -14,7 +14,7 @@ public record CriacaoClienteResponse(Long id,
 
         public CriacaoClienteResponse(Cliente cliente){
                 this(
-                        cliente.getId(),
+                        cliente.getIdCliente(),
                         cliente.getNome(),
                         cliente.getDataNascimento(),
                         cliente.getNumeroConta(),

@@ -14,7 +14,7 @@ public record DepositoResponse(Long id,
 
     public DepositoResponse(Cliente cliente){
         this(
-                cliente.getId(),
+                cliente.getIdCliente(),
                 cliente.getNome(),
                 cliente.getDataNascimento(),
                 cliente.getNumeroConta(),

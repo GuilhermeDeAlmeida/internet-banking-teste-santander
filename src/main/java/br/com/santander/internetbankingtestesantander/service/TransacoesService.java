@@ -2,6 +2,7 @@ package br.com.santander.internetbankingtestesantander.service;
 
 import br.com.santander.internetbankingtestesantander.dto.ListagemClientesResponse;
 import br.com.santander.internetbankingtestesantander.dto.ListagemTransacoesResponse;
+import br.com.santander.internetbankingtestesantander.model.TipoOperacao;
 import br.com.santander.internetbankingtestesantander.repository.TransacaoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Service
@@ -24,17 +27,16 @@ public class TransacoesService {
      * Consultar o histórico de transações de cada movimentação por Data
      * (Saque e depósito)
      * */
-    public Page<ListagemTransacoesResponse> obterListaTransacoes(Pageable paginacao, String dataTransacao, String tipoOperacao) {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Page<ListagemTransacoesResponse> map = null;
-        try {
-            map= repository
-                    .findByDataTransacaoAndTipoOperacao(paginacao, formato.parse(dataTransacao), tipoOperacao)
-                    .map(ListagemTransacoesResponse::new);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public Page<ListagemTransacoesResponse> obterListaTransacoes(Pageable paginacao, String dataTransacao, TipoOperacao tipoOperacao) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(dataTransacao, formatter);
+        Page<ListagemTransacoesResponse> map = repository
+            .findByDataTransacaoAndTipoOperacao(paginacao, date, tipoOperacao)
+            .map(ListagemTransacoesResponse::new);
+
         return map;
+
+
     }
 
     public Page<ListagemTransacoesResponse> obterListaTransacoes() {

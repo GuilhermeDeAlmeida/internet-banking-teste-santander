@@ -1,7 +1,6 @@
 package br.com.santander.internetbankingtestesantander.dto;
 
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
-import br.com.santander.internetbankingtestesantander.entity.Transacao;
 
 import java.math.BigDecimal;
 
@@ -15,7 +14,7 @@ public record ListagemClientesResponse(Long id,
 
     public ListagemClientesResponse(Cliente cliente){
         this(
-                cliente.getId(),
+                cliente.getIdCliente(),
                 cliente.getNome(),
                 cliente.getDataNascimento(),
                 cliente.getNumeroConta(),
