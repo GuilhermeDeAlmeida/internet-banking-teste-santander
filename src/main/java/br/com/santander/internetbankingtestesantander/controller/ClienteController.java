@@ -4,7 +4,6 @@ import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteRequest;
 
 import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteResponse;
 import br.com.santander.internetbankingtestesantander.dto.ListagemClientesResponse;
-import br.com.santander.internetbankingtestesantander.model.ClienteResponse;
 import br.com.santander.internetbankingtestesantander.service.ClienteService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("clients")
+@RequestMapping("clientes")
 public class ClienteController {
 
     private final ClienteService service;

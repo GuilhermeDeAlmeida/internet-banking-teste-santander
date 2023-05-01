@@ -1,6 +1,7 @@
 package br.com.santander.internetbankingtestesantander.dto;
 
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
+import br.com.santander.internetbankingtestesantander.entity.Transacao;
 
 import java.math.BigDecimal;
 

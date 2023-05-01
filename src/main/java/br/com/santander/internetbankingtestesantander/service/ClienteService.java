@@ -4,12 +4,9 @@ import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteRequest;
 import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteResponse;
 import br.com.santander.internetbankingtestesantander.dto.ListagemClientesResponse;
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
-import br.com.santander.internetbankingtestesantander.model.ClienteRequest;
-import br.com.santander.internetbankingtestesantander.model.ClienteResponse;
 import br.com.santander.internetbankingtestesantander.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 

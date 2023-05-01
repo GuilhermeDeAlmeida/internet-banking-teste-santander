@@ -5,8 +5,6 @@ import br.com.santander.internetbankingtestesantander.dto.DepositoResponse;
 import br.com.santander.internetbankingtestesantander.dto.SaqueRequest;
 import br.com.santander.internetbankingtestesantander.dto.SaqueResponse;
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
-import br.com.santander.internetbankingtestesantander.model.OperacaoValorRequest;
-import br.com.santander.internetbankingtestesantander.model.OperacaoValorResponse;
 import br.com.santander.internetbankingtestesantander.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
