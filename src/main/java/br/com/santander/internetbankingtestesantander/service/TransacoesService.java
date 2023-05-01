@@ -25,7 +25,7 @@ public class TransacoesService {
      * (Saque e depósito)
      * */
     public Page<ListagemTransacoesResponse> obterListaTransacoes(Pageable paginacao, String dataTransacao, String tipoOperacao) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Page<ListagemTransacoesResponse> map = null;
         try {
             map= repository
