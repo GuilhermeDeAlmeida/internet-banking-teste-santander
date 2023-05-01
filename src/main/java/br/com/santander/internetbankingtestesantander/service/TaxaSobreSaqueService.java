@@ -1,10 +1,12 @@
 package br.com.santander.internetbankingtestesantander.service;
 
 import br.com.santander.internetbankingtestesantander.model.Saque;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+@Service
 public class TaxaSobreSaqueService {
     /**
      * valor <= 100     isento

@@ -1,4 +1,4 @@
-package br.com.santander.internetbankingtestesantander;
+package br.com.santander.internetbankingtestesantander.controller;
 
 import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteRequest;
 

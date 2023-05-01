@@ -47,6 +47,10 @@ public class Cliente {
         return saldo;
     }
 
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
+    }
+
     public String getNumeroConta() {
         return numeroConta;
     }
@@ -54,4 +58,5 @@ public class Cliente {
     public String getDataNascimento() {
         return dataNascimento;
     }
+
 }
