@@ -23,18 +23,11 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-    /**
-     * Retornar todos clientes cadastrados
-     * */
+
     @Transactional
     public CriacaoClienteResponse cadastrarCliente(CriacaoClienteRequest clienteRequest){
         Cliente save = repository.save(new Cliente(clienteRequest));
-//        return null;
         return new CriacaoClienteResponse(save);
-    }
-    public List<ClienteResponse> obterListaClientes() {
-        repository.findAll(PageRequest.of(0, 2)).map(ListagemClientesResponse::new);
-        return new ArrayList<>();
     }
 
     public Page<ListagemClientesResponse> obterListaClientes(Pageable paginacao) {

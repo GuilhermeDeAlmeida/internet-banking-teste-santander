@@ -1,5 +1,7 @@
 package br.com.santander.internetbankingtestesantander.service;
 
+import br.com.santander.internetbankingtestesantander.dto.DepositoRequest;
+import br.com.santander.internetbankingtestesantander.dto.DepositoResponse;
 import br.com.santander.internetbankingtestesantander.dto.SaqueRequest;
 import br.com.santander.internetbankingtestesantander.dto.SaqueResponse;
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
@@ -24,31 +26,25 @@ public class ValoresService {
         this.taxaSobreSaqueService = taxaSobreSaqueService;
     }
 
-    /**
-     * Depositar um valor que aumenta o saldo de um determinado cliente
-     * */
-    public OperacaoValorResponse depositarValor(OperacaoValorRequest operacaoValorRequest) {
-        return new OperacaoValorResponse();
-    }
-
-    /**
-     * valor <= 100     isento
-     * valor > 100      0.004
-     * valor > 300      0.01
-     * planoExlcusive   isento
-     * */
-    public OperacaoValorResponse sacarValor(OperacaoValorRequest operacaoValorRequest) {
-        return new OperacaoValorResponse();
-
-    }
-
-
     public SaqueResponse sacarValor(SaqueRequest saque) {
+        //buscar cliente por conta
         Cliente cliente = clienteRepository.findByNumeroConta(saque.numeroConta());
+        //obter e aplicar taxa sob valor do saque
+        //subtrair valor do saque em relacao ao saldo do cliente
         BigDecimal novoSaldo = cliente.getSaldo().subtract(saque.valor());
+        // atualizar saldo com o resultado e salvar cliente
         cliente.setSaldo(novoSaldo);
         clienteRepository.save(cliente);
 
         return new SaqueResponse(cliente);
+    }
+
+    public DepositoResponse depositarValor(DepositoRequest deposito) {
+        Cliente cliente = clienteRepository.findByNumeroConta(deposito.numeroConta());
+        BigDecimal novoSaldo = cliente.getSaldo().add(deposito.valor());
+        cliente.setSaldo(novoSaldo);
+        clienteRepository.save(cliente);
+
+        return new DepositoResponse(cliente);
     }
 }
