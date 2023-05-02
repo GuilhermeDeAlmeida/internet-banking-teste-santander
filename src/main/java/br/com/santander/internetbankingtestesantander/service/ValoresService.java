@@ -11,6 +11,7 @@ import br.com.santander.internetbankingtestesantander.repository.ClienteReposito
 import br.com.santander.internetbankingtestesantander.repository.TransacaoRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -33,6 +34,9 @@ public class ValoresService {
 
     public SaqueResponse sacarValor(SaqueRequest saque) {
         List<Cliente> listaClientes = clienteRepository.findByNumeroConta(saque.numeroConta());
+        if(listaClientes.size() <= 0){
+            throw new EntityNotFoundException();
+        }
         Cliente cliente = listaClientes.get(0);
         Taxa taxa = taxaSobreSaqueService.aplicarTaxa(saque, cliente);
         BigDecimal novoSaldo = cliente.getSaldo().subtract(taxa.valorComTaxa());
@@ -45,15 +49,16 @@ public class ValoresService {
     }
 
     public DepositoResponse depositarValor(DepositoRequest deposito) {
-        Cliente cliente = clienteRepository.findByNumeroConta(deposito.numeroConta()).get(0);
+        List<Cliente> listaClientes = clienteRepository.findByNumeroConta(deposito.numeroConta());
+        if(listaClientes.size() <= 0){
+            throw new EntityNotFoundException();
+        }
+        Cliente cliente = listaClientes.get(0);
         BigDecimal novoSaldo = cliente.getSaldo().add(deposito.valor());
         cliente.setSaldo(novoSaldo);
         clienteRepository.save(cliente);
 
-        transacaoRepository.save(
-                new Transacao(cliente.getIdCliente(), LocalDate.now(), deposito.valor())
-        );
-
+        transacaoRepository.save(new Transacao(cliente.getIdCliente(), LocalDate.now(), deposito.valor()));
         return new DepositoResponse(cliente);
     }
 }

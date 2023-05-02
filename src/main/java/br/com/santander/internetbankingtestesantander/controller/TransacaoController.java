@@ -6,6 +6,7 @@ import br.com.santander.internetbankingtestesantander.service.TransacoesService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +25,14 @@ public class TransacaoController {
     public ResponseEntity<Page<ListagemTransacoesResponse>> obterListaTransacoes(
             @PageableDefault(sort = {"dataTransacao"}) Pageable paginacao,
             @RequestParam(required = false) String dataTransacao,
-            @RequestParam String tipoOperacao) {
+            @RequestParam TipoOperacao tipoOperacao) {
 
-        return ResponseEntity.ok(service
-                .obterListaTransacoes(paginacao, dataTransacao, TipoOperacao.valueOf(tipoOperacao)));
+        Page<ListagemTransacoesResponse> listagemTransacoesResponses =
+                service.obterListaTransacoes(paginacao, dataTransacao, tipoOperacao);
+        if(null == listagemTransacoesResponses){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        return ResponseEntity.ok(listagemTransacoesResponses);
     }
 
 

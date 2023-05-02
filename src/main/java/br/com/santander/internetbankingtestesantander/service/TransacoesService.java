@@ -29,9 +29,17 @@ public class TransacoesService {
      * */
     public Page<ListagemTransacoesResponse> obterListaTransacoes(Pageable paginacao, String dataTransacao, TipoOperacao tipoOperacao) {
         Page<ListagemTransacoesResponse> map;
+
+//        if(tipoOperacao.equals("SAQUE") || tipoOperacao.equals("DEPOSITO") )
+
         if(null != dataTransacao && !dataTransacao.isBlank()){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(dataTransacao, formatter);
+            LocalDate date = null;
+            try{
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                date = LocalDate.parse(dataTransacao, formatter);
+            }catch (Exception e){
+                return null;
+            }
             map = repository
                     .findByDataTransacaoAndTipoOperacao(paginacao, date, tipoOperacao)
                     .map(ListagemTransacoesResponse::new);

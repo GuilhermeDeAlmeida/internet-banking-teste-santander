@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.transaction.Transactional;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +26,17 @@ public class ClienteService {
 
     @Transactional
     public CriacaoClienteResponse cadastrarCliente(CriacaoClienteRequest clienteRequest){
-        List<Cliente> contasExistentes = repository.findByNumeroConta(clienteRequest.numeroConta());
-        if(contasExistentes.size() > 0){
-            //lançar erro, pois já existe uma conta cadastrada com esse número;
+        try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate.parse(clienteRequest.dataNascimento(), formatter);
+        }catch(Exception ex){
             return null;
         }
 
+        List<Cliente> contasExistentes = repository.findByNumeroConta(clienteRequest.numeroConta());
+        if(contasExistentes.size() > 0){
+            return null;
+        }
         Cliente save = repository.save(new Cliente(clienteRequest));
         return new CriacaoClienteResponse(save);
     }
