@@ -4,7 +4,7 @@ import br.com.santander.internetbankingtestesantander.dto.SaqueRequest;
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
 import br.com.santander.internetbankingtestesantander.model.Taxa;
 import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
-import br.com.santander.internetbankingtestesantander.service.validacao.ValidacaoTaxa;
+import br.com.santander.internetbankingtestesantander.service.validacao.*;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 public class TaxaSobreSaqueService {
 
-    private List<ValidacaoTaxa> validacoes;
     /**
      * valor <= 100     isento
      * valor > 100      0.004
@@ -52,6 +51,16 @@ public class TaxaSobreSaqueService {
         BigDecimal valorComTaxa = saque.valor().add(saque.valor().multiply(taxa));
 
         return new Taxa(valor, valorComTaxa, regraAplicada, cobradoTaxa);
-
     }
+
+//    public Taxa aplicarTaxa(SaqueRequest saque, Cliente cliente) {
+//        ValidacaoTaxa validacaoTaxa = new ValorOperacaoMenorIgualCem(
+//                new ValorOperacaoMaiorCemMenorTrezentos(
+//                        new ValorOperacaoMaiorTrezentos(
+//                                new ClientePlanoExclusive()
+//                        )));
+//
+//        return validacaoTaxa.calcularTaxa(saque, cliente);
+//
+//    }
 }

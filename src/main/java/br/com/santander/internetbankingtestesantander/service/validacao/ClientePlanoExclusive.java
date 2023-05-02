@@ -8,8 +8,8 @@ import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public class ValidacaoClientePlanoExclusive extends ValidacaoTaxa{
-    public ValidacaoClientePlanoExclusive(ValidacaoTaxa proximo) {
+public class ClientePlanoExclusive extends ValidacaoTaxa{
+    public ClientePlanoExclusive() {
         super(null);
     }
 
