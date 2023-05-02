@@ -14,7 +14,7 @@ public record ListagemClientesResponse(Long id,
 
     public ListagemClientesResponse(Cliente cliente){
         this(
-                cliente.getId(),
+                cliente.getIdCliente(),
                 cliente.getNome(),
                 cliente.getDataNascimento(),
                 cliente.getNumeroConta(),

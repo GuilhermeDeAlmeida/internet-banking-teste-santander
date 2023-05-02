@@ -14,7 +14,7 @@ public record SaqueResponse(Long id,
 
     public SaqueResponse(Cliente cliente){
         this(
-                cliente.getId(),
+                cliente.getIdCliente(),
                 cliente.getNome(),
                 cliente.getDataNascimento(),
                 cliente.getNumeroConta(),

@@ -1,10 +1,14 @@
 package br.com.santander.internetbankingtestesantander.service;
 
-import br.com.santander.internetbankingtestesantander.model.Saque;
+import br.com.santander.internetbankingtestesantander.dto.SaqueRequest;
+import br.com.santander.internetbankingtestesantander.entity.Cliente;
+import br.com.santander.internetbankingtestesantander.model.Taxa;
+import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 
 @Service
 public class TaxaSobreSaqueService {
@@ -14,24 +18,37 @@ public class TaxaSobreSaqueService {
      * valor > 300      0.01
      * planoExlcusive   isento
      * */
-    public void aplicarTaxa(Saque saque) {
-        BigDecimal valorSaque = saque.getValor();
-        BigDecimal taxa;
+    public Taxa aplicarTaxa(SaqueRequest saque, Cliente cliente) {
+        BigDecimal taxa = new BigDecimal(BigInteger.ZERO);
+        BigDecimal valor = saque.valor();
         BigDecimal cem = new BigDecimal("100");
         BigDecimal trezentos = new BigDecimal("300");
+        boolean cobradoTaxa = false;
+        TipoTaxa regraAplicada = TipoTaxa.NONE;
 
-        if(saque.isPlanoExclusive()){
+        if(valor.compareTo(cem) < 0){
             taxa = new BigDecimal(BigInteger.ZERO);
+            regraAplicada = TipoTaxa.NONE;
         }
-        if(valorSaque.compareTo(cem) < 0){
-            taxa = new BigDecimal(BigInteger.ZERO);
-        }
-        if(valorSaque.compareTo(cem) > 0 && valorSaque.compareTo(trezentos) < 0){
+        if(valor.compareTo(cem) > 0 && saque.valor().compareTo(trezentos) < 0){
             taxa = new BigDecimal("0.004");
+            cobradoTaxa = true;
+            regraAplicada = TipoTaxa.VALOR_MAIOR_100EVALOR_MENORIGUAL_300;
         }
-        if(valorSaque.compareTo(trezentos) > 0){
+        if(valor.compareTo(trezentos) > 0){
             taxa = new BigDecimal("0.01");
+            cobradoTaxa= true;
+            regraAplicada = TipoTaxa.VALOR_MAIOR_300;
         }
+        if(cliente.getPlanoExclusive()){
+            taxa = new BigDecimal(BigInteger.ZERO);
+            cobradoTaxa= false;
+            regraAplicada = TipoTaxa.EXCLUSIVE;
+        }
+
+        BigDecimal valorComTaxa = saque.valor().add(saque.valor().multiply(taxa));
+
+        return new Taxa(valor, valorComTaxa, regraAplicada, cobradoTaxa);
 
     }
 }

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCliente;
     private String nome;
     private Boolean planoExclusive;
     private BigDecimal saldo;
@@ -31,8 +31,8 @@ public class Cliente {
         this.dataNascimento= clienteRequest.dataNascimento();
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdCliente() {
+        return idCliente;
     }
 
     public String getNome() {

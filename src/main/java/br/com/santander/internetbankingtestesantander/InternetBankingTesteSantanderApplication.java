@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"br.com.santander.internetbankingtestesantander.entity"})
 public class InternetBankingTesteSantanderApplication {
 
 	public static void main(String[] args) {

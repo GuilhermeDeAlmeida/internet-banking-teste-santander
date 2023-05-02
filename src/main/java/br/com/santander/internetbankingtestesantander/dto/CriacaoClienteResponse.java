@@ -8,16 +8,14 @@ public record CriacaoClienteResponse(Long id,
                                      String nome,
                                      String dataNascimento,
                                      String numeroConta,
-                                     String conta,
                                      BigDecimal saldo,
                                      Boolean planoExclusive) {
 
         public CriacaoClienteResponse(Cliente cliente){
                 this(
-                        cliente.getId(),
+                        cliente.getIdCliente(),
                         cliente.getNome(),
                         cliente.getDataNascimento(),
-                        cliente.getNumeroConta(),
                         cliente.getNumeroConta(),
                         cliente.getSaldo(),
                         cliente.getPlanoExclusive()
