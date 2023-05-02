@@ -6,6 +6,7 @@ import br.com.santander.internetbankingtestesantander.dto.CriacaoClienteResponse
 import br.com.santander.internetbankingtestesantander.dto.ListagemClientesResponse;
 import br.com.santander.internetbankingtestesantander.service.ClienteService;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +32,9 @@ public class ClienteController {
             UriComponentsBuilder uriBuilder
     ){
         CriacaoClienteResponse clienteResponse = service.cadastrarCliente(cliente);
+        if(null == clienteResponse){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
         var uri = uriBuilder.path("/clientes/{id}").buildAndExpand(clienteResponse.id()).toUri();
         return ResponseEntity.created(uri).body(clienteResponse);
     }
