@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -25,9 +26,13 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<CriacaoClienteResponse> cadastrarCliente(@RequestBody @Valid CriacaoClienteRequest cliente) {
+    public ResponseEntity<CriacaoClienteResponse> cadastrarCliente(
+            @RequestBody @Valid CriacaoClienteRequest cliente,
+            UriComponentsBuilder uriBuilder
+    ){
         CriacaoClienteResponse clienteResponse = service.cadastrarCliente(cliente);
-        return ResponseEntity.ok(clienteResponse);
+        var uri = uriBuilder.path("/clientes/{id}").buildAndExpand(clienteResponse.id()).toUri();
+        return ResponseEntity.created(uri).body(clienteResponse);
     }
 
     @GetMapping
