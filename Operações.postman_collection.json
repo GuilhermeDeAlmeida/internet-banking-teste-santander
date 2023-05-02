@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "92fd4938-4b0c-43ae-8d94-0bdaa9c0fdcc",
+		"name": "Operações",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2729625"
+	},
+	"item": [
+		{
+			"name": "Efetuar saque - operacoes 200 OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"10371301\",\n    \"valor\": 150.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/sacar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"sacar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar saque - operacoes 200 OK 400 BadRequest valor menor igual a zero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"10371301\",\n    \"valor\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/sacar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"sacar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar saque - operacoes 404 NotFound conta não localizada",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"123\",\n    \"valor\": 150.50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/sacar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"sacar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar deposito - operacoes 200 OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"10371301\",\n    \"valor\": 2000.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/depositar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"depositar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar deposito - operacoes 400 BadRequest valor menor igual a zero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"10371301\",\n    \"valor\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/depositar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"depositar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar deposito - operacoes 404 NotFound conta não localizada",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numeroConta\": \"1234\",\n    \"valor\": 25550.50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/operacoes/depositar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"operacoes",
+						"depositar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "49b9dde5-fddb-4c6e-88a2-dcd818e3e21e",
+		"name": "Transacoes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2729625"
+	},
+	"item": [
+		{
+			"name": "Obter transacoes por data da transação e tipo de operação 200 OK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/transacoes/?dataTransacao=2023-04-28&tipoOperacao=DEPOSITO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transacoes",
+						""
+					],
+					"query": [
+						{
+							"key": "dataTransacao",
+							"value": "2023-04-28"
+						},
+						{
+							"key": "tipoOperacao",
+							"value": "DEPOSITO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter transacoes por data da transação e tipo de operação 400 data inválida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/transacoes/?dataTransacao=202&tipoOperacao=DEPOSITO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transacoes",
+						""
+					],
+					"query": [
+						{
+							"key": "dataTransacao",
+							"value": "202"
+						},
+						{
+							"key": "tipoOperacao",
+							"value": "DEPOSITO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter transacoes por tipo de operação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/transacoes/?tipoOperacao=SAQUE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transacoes",
+						""
+					],
+					"query": [
+						{
+							"key": "tipoOperacao",
+							"value": "SAQUE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter transacoes por tipo de operação 400 tipoOperacao nao mapeado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/transacoes/?tipoOperacao=SAQUEs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transacoes",
+						""
+					],
+					"query": [
+						{
+							"key": "tipoOperacao",
+							"value": "SAQUEs"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter todas as transações - apenas teste",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/transacoes/teste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transacoes",
+						"teste"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
