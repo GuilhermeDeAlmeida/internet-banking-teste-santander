@@ -28,15 +28,20 @@ public class TransacoesService {
      * (Saque e depósito)
      * */
     public Page<ListagemTransacoesResponse> obterListaTransacoes(Pageable paginacao, String dataTransacao, TipoOperacao tipoOperacao) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(dataTransacao, formatter);
-        Page<ListagemTransacoesResponse> map = repository
-            .findByDataTransacaoAndTipoOperacao(paginacao, date, tipoOperacao)
-            .map(ListagemTransacoesResponse::new);
+        Page<ListagemTransacoesResponse> map;
+        if(null != dataTransacao && !dataTransacao.isBlank()){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.parse(dataTransacao, formatter);
+            map = repository
+                    .findByDataTransacaoAndTipoOperacao(paginacao, date, tipoOperacao)
+                    .map(ListagemTransacoesResponse::new);
+        }else{
+            map = repository
+                    .findByTipoOperacao(paginacao, tipoOperacao)
+                    .map(ListagemTransacoesResponse::new);
+        }
 
         return map;
-
-
     }
 
     public Page<ListagemTransacoesResponse> obterListaTransacoes() {

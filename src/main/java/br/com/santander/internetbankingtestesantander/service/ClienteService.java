@@ -20,9 +20,14 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-
     @Transactional
     public CriacaoClienteResponse cadastrarCliente(CriacaoClienteRequest clienteRequest){
+        List<Cliente> contasExistentes = repository.findByNumeroConta(clienteRequest.numeroConta());
+        if(contasExistentes.size() > 0){
+            //lançar erro, pois já existe uma conta cadastrada com esse número;
+            return null;
+        }
+
         Cliente save = repository.save(new Cliente(clienteRequest));
         return new CriacaoClienteResponse(save);
     }

@@ -10,5 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
+    Page<Transacao> findByTipoOperacao(Pageable pageable, TipoOperacao tipoOperacao);
+
     Page<Transacao> findByDataTransacaoAndTipoOperacao(Pageable pageable, LocalDate dataTransacao, TipoOperacao tipoOperacao);
 }

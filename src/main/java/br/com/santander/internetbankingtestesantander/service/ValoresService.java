@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ValoresService {
@@ -31,7 +32,8 @@ public class ValoresService {
     }
 
     public SaqueResponse sacarValor(SaqueRequest saque) {
-        Cliente cliente = clienteRepository.findByNumeroConta(saque.numeroConta()).get(0);
+        List<Cliente> listaClientes = clienteRepository.findByNumeroConta(saque.numeroConta());
+        Cliente cliente = listaClientes.get(0);
         Taxa taxa = taxaSobreSaqueService.aplicarTaxa(saque, cliente);
         BigDecimal novoSaldo = cliente.getSaldo().subtract(taxa.valorComTaxa());
         cliente.setSaldo(novoSaldo);

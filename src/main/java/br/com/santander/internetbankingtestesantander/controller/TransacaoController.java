@@ -23,7 +23,7 @@ public class TransacaoController {
     @GetMapping
     public ResponseEntity<Page<ListagemTransacoesResponse>> obterListaTransacoes(
             @PageableDefault(sort = {"dataTransacao"}) Pageable paginacao,
-            @RequestParam String dataTransacao,
+            @RequestParam(required = false) String dataTransacao,
             @RequestParam String tipoOperacao) {
 
         return ResponseEntity.ok(service

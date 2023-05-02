@@ -31,7 +31,7 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ListagemClientesResponse>> obterListaClientes(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+    public ResponseEntity<Page<ListagemClientesResponse>> obterListaClientes(@PageableDefault(sort = {"nome"}) Pageable paginacao) {
         return ResponseEntity.ok(service.obterListaClientes(paginacao));
     }
 

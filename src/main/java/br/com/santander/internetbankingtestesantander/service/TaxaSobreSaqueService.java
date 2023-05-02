@@ -2,15 +2,13 @@ package br.com.santander.internetbankingtestesantander.service;
 
 import br.com.santander.internetbankingtestesantander.dto.SaqueRequest;
 import br.com.santander.internetbankingtestesantander.entity.Cliente;
-import br.com.santander.internetbankingtestesantander.entity.Transacao;
 import br.com.santander.internetbankingtestesantander.model.Taxa;
 import br.com.santander.internetbankingtestesantander.model.TipoTaxa;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Service
 public class TaxaSobreSaqueService {
